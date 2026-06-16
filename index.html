@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B&F Intelligence // Royal Blue AI Employee</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            // Define the specific Royal Blue tones
+            royal: {
+              500: '#2563eb', // Standard Royal Blue
+              600: '#1d4ed8', // Darker Royal for UI accents
+              700: '#1e40af', // Deepest Royal for shadows
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* New Backdrop: Stunning architectural glass structure. */
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2570&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .text-balance { text-wrap: balance; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="text-white antialiased relative min-h-screen pb-32">
+
+  <div class="fixed inset-0 bg-black/55 z-0 pointer-events-none backdrop-blur-[2px]"></div>
+
+  <div class="relative z-10 max-w-md mx-auto px-6 py-16 space-y-16 sm:max-w-xl">
+
+    <header class="flex justify-between items-center">
+      <span class="text-xs font-bold tracking-[0.3em] text-white">B&F INTELLIGENCE</span>
+      <span class="font-mono text-[9px] text-royal-500 bg-white/10 px-2 py-0.5 rounded border border-white/10">CORE SYSTEMS v2.0</span>
+    </header>
+
+    <section class="space-y-6">
+      <h1 class="text-4xl font-extrabold tracking-tight text-white leading-[1.1] text-balance">
+        Your Website Should Be Working Even While You Sleep.
+      </h1>
+      <p class="text-base text-neutral-300 font-light leading-relaxed tracking-wide">
+        B&F builds custom AI receptionists that answer your customers’ questions, qualify leads, and capture entries 24/7. Your next customer shouldn’t have to wait until Monday morning.
+      </p>
+      <div class="pt-2">
+        <button onclick="openWidget()" class="w-full text-center bg-royal-600 text-white font-bold text-xs py-4 rounded-xl uppercase tracking-wider transition-all hover:bg-royal-700 shadow-md">
+          Initialize B&F AI Assistant
+        </button>
+      </div>
+    </section>
+
+    <section class="space-y-4 pt-4 border-t border-white/10">
+      <h2 class="text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase">The Revenue Leak</h2>
+      <p class="text-sm text-neutral-200 font-normal leading-relaxed">
+        While you are running your operations, on job sites, or resting after hours:
+      </p>
+      <ul class="text-sm text-neutral-400 space-y-3 font-light pl-1">
+        <li class="flex items-start gap-3"><span class="text-royal-500 font-bold">▪</span> Urgent weekend inquiries hit empty contact forms and go cold.</li>
+        <li class="flex items-start gap-3"><span class="text-royal-500 font-bold">▪</span> High-intent prospects look for quick answers and bounce to your competitors.</li>
+        <li class="flex items-start gap-3"><span class="text-royal-500 font-bold">▪</span> Inbound leads remain unhandled until standard office hours start.</li>
+      </ul>
+      <p class="text-sm text-white font-semibold pt-2">
+        Every unhandled customer question is a direct opportunity handed over to someone else.
+      </p>
+    </section>
+
+    <section class="space-y-6 pt-4 border-t border-white/10">
+      <h2 class="text-sm font-bold text-white tracking-tight uppercase">Operational Protocol</h2>
+      
+      <div class="space-y-5">
+        <div class="flex gap-4 items-start">
+          <div class="font-mono text-[10px] bg-royal-600 text-white w-6 h-6 rounded flex items-center justify-center shrink-0">1</div>
+          <div class="space-y-0.5">
+            <h3 class="text-xs font-bold text-white uppercase">Inbound Sync</h3>
+            <p class="text-xs text-neutral-400 font-light leading-relaxed">The custom assistant interfaces directly with your web traffic without manual input.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <div class="font-mono text-[10px] bg-royal-600 text-white w-6 h-6 rounded flex items-center justify-center shrink-0">2</div>
+          <div class="space-y-0.5">
+            <h3 class="text-xs font-bold text-white uppercase">Instant Resolution</h3>
+            <p class="text-xs text-neutral-400 font-light leading-relaxed">The AI uses your specific business guidelines to resolve questions instantly.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4 items-start">
+          <div class="font-mono text-[10px] bg-royal-600 text-white w-6 h-6 rounded flex items-center justify-center shrink-0">3</div>
+          <div class="space-y-0.5">
+            <h3 class="text-xs font-bold text-white uppercase">Data Capture</h3>
+            <p class="text-xs text-neutral-400 font-light leading-relaxed">Contact vectors are captured cleanly within the natural conversation line.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-8 border-t border-white/10 text-center font-mono text-[9px] text-neutral-500 tracking-widest">
+      B&F INTELLIGENCE CORE // SECURED TERMINAL
+    </footer>
+
+  </div>
+
+  <div class="fixed bottom-4 right-4 left-4 z-50 max-w-md mx-auto sm:left-auto sm:right-6 sm:w-85 transition-all duration-300">
+    
+    <button id="widget-trigger" onclick="toggleWidget()" class="ml-auto flex items-center gap-2 bg-royal-600 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-white/10 hover:bg-royal-700 transition-all">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-xs font-semibold tracking-wider uppercase font-sans">Talk to B&F AI</span>
+    </button>
+
+    <div id="widget-window" class="hidden flex-col bg-blue-600/60 backdrop-blur-3xl border border-blue-500 rounded-2xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] h-[360px] transition-all duration-300">
+      
+      <div class="bg-neutral-950 px-4 py-3.5 flex items-center justify-between border-b border-white/10">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-[10px] font-bold text-white uppercase font-mono tracking-widest">B&F COMPASS v2.0</span>
+        </div>
+        <button onclick="toggleWidget()" class="text-neutral-400 hover:text-white text-xs font-mono px-1">✕</button>
+      </div>
+
+      <div id="widget-stream" class="p-4 flex-1 overflow-y-auto text-xs space-y-4 no-scrollbar">
+        <div class="text-left bg-black/30 border border-white/5 p-3 rounded-xl max-w-[85%] text-neutral-200 leading-relaxed font-medium">
+          Hello, this is the B&F AI Receptionist, Compass. Let's look at your website layout. Can I know your full name to begin?
+        </div>
+      </div>
+
+      <div class="p-3 bg-black/40 border-t border-white/10 flex gap-2">
+        <input 
+          id="widget-input"
+          type="text" 
+          placeholder="Type your answer here..." 
+          onkeypress="checkWidgetKey(event)"
+          class="flex-1 bg-white/95 border border-royal-500 rounded-xl px-3 py-2.5 text-xs text-neutral-950 placeholder-neutral-500 shadow-inner focus:outline-none focus:border-royal-600"
+        />
+        <button onclick="handleWidgetSubmission()" class="bg-white text-royal-600 text-xs font-bold px-4 rounded-xl hover:bg-neutral-100 transition-all shadow-md">Send</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let intakeStage = 0;
+    let leadFields = { name: '', url: '', contact: '' };
+
+    function toggleWidget() {
+      const windowFrame = document.getElementById('widget-window');
+      const triggerBtn = document.getElementById('widget-trigger');
+      
+      if(windowFrame.classList.contains('hidden')) {
+        windowFrame.classList.remove('hidden');
+        windowFrame.classList.add('flex');
+        triggerBtn.classList.add('hidden');
+      } else {
+        windowFrame.classList.remove('flex');
+        windowFrame.classList.add('hidden');
+        triggerBtn.classList.remove('hidden');
+      }
+    }
+
+    function openWidget() {
+      const windowFrame = document.getElementById('widget-window');
+      const triggerBtn = document.getElementById('widget-trigger');
+      windowFrame.classList.remove('hidden');
+      windowFrame.classList.add('flex');
+      triggerBtn.classList.add('hidden');
+      document.getElementById('widget-input').focus();
+    }
+
+    function checkWidgetKey(e) { if(e.key === 'Enter') handleWidgetSubmission(); }
+
+    function appendWidgetMsg(sender, text) {
+      const stream = document.getElementById('widget-stream');
+      const bubble = document.createElement('div');
+      
+      if(sender === 'user') {
+        bubble.className = "text-right ml-auto bg-black text-white p-3 rounded-lg max-w-[85%] leading-relaxed shadow-sm";
+      } else {
+        bubble.className = "text-left bg-black/30 border border-white/5 p-3 rounded-xl max-w-[85%] text-neutral-200 leading-relaxed font-medium";
+      }
+      
+      bubble.innerHTML = text;
+      stream.appendChild(bubble);
+      stream.scrollTop = stream.scrollHeight;
+    }
+
+    function handleWidgetSubmission() {
+      const input = document.getElementById('widget-input');
+      const value = input.value.trim();
+      if(!value) return;
+
+      input.value = '';
+      appendWidgetMsg('user', value);
+
+      setTimeout(() => {
+        if (intakeStage === 0) {
+          leadFields.name = value;
+          intakeStage = 1;
+          appendWidgetMsg('bot', `Thank you, ${leadFields.name}. What is your current business website URL link?`);
+          input.placeholder = "e.g., business.com";
+        } 
+        else if (intakeStage === 1) {
+          leadFields.url = value;
+          intakeStage = 2;
+          appendWidgetMsg('bot', "Got it. Lastly, what is the best direct business phone number or email address to route your analysis?");
+          input.placeholder = "Enter phone or email address...";
+        } 
+        else if (intakeStage === 2) {
+          leadFields.contact = value;
+          intakeStage = 3;
+          input.disabled = true;
+          input.placeholder = "Analysis processing...";
+          
+          appendWidgetMsg('bot', "Compiling structural metrics... Analyzing your data integrity vectors right now.");
+          
+          setTimeout(() => {
+            appendWidgetMsg('bot', `<span class="text-emerald-400 font-bold block mb-1">✓ DIAGNOSTIC BLOCK LOCKED</span> Your personalized website readiness score and complete optimization analysis brief have been generated successfully.`);
+          }, 1500);
+        }
+      }, 600);
+    }
+  </script>
+
+</body>
+</html>
