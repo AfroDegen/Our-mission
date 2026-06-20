@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>B&F Intelligence // Compass</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            royal: {
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      /* Premium dark industrial luxury background from Pexels running edge-to-edge */
+      background-image: url('https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .text-balance { text-wrap: balance; }
+  </style>
+
+  <script 
+    id="retell-widget" 
+    src="https://dashboard.retellai.com/retell-widget-v2.js" 
+    data-public-key="YOUR_PUBLIC_KEY_HERE"
+    data-voice-public-key="YOUR_PUBLIC_KEY_HERE"
+    data-voice-agent-id="YOUR_AGENT_ID_HERE"
+    data-show-launcher="false"
+    data-bot-name="Compass">
+  </script>
+
+  <script>
+    function launchRetellCall() {
+      if (window.RetellWebClient) {
+        window.RetellWebClient.startCall();
+      } else {
+        console.error("Retell client initializing...");
+      }
+    }
+  </script>
+</head>
+<body class="text-white antialiased relative min-h-screen">
+
+  <div class="fixed inset-0 bg-neutral-950/92 z-0 pointer-events-none backdrop-blur-[2px]"></div>
+
+  <div class="relative z-10 max-w-md mx-auto px-6 pt-16 pb-24 space-y-28 sm:max-w-xl">
+
+    <header class="flex justify-between items-center">
+      <div class="flex flex-col gap-1">
+        <span class="text-xs font-bold tracking-[0.3em] text-white">B&F INTELLIGENCE</span>
+        <span class="text-[9px] font-mono tracking-widest text-neutral-500 uppercase">AI Employees for Service Businesses</span>
+      </div>
+    </header>
+
+    <section class="space-y-8 pt-4">
+      <div class="space-y-4">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.15] text-balance">
+          Never miss another customer call.
+        </h1>
+        <p class="text-sm sm:text-base text-neutral-400 font-normal leading-relaxed text-balance max-w-md">
+          Compass answers incoming lines, qualifies caller intent, and locks appointments directly into your CRM 24/7.
+        </p>
+      </div>
+      
+      <div class="pt-2">
+        <button onclick="launchRetellCall()" class="w-full sm:w-auto px-10 bg-royal-600 border border-white/5 text-white font-semibold text-xs py-4 rounded-xl uppercase tracking-widest transition-all hover:bg-royal-500 shadow-[0_4px_30px_rgba(37,99,235,0.2)] flex items-center justify-center gap-2">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+          </svg>
+          <span>Talk to Compass</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="space-y-6 pt-4 border-t border-white/10">
+      <h2 class="text-[10px] font-mono font-bold tracking-[0.2em] text-neutral-500 uppercase">Operational Outcomes</h2>
+      
+      <div class="space-y-4 font-medium text-sm text-neutral-200">
+        <div class="flex items-start gap-4">
+          <span class="text-royal-500 font-mono text-xs pt-0.5">01</span>
+          <span>Plug revenue leaks by answering missed opportunity calls instantly</span>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-royal-500 font-mono text-xs pt-0.5">02</span>
+          <span>Qualify emergency dispatch parameters before booking</span>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-royal-500 font-mono text-xs pt-0.5">03</span>
+          <span>Maintain uninterrupted operational coverage outside business hours</span>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="text-royal-500 font-mono text-xs pt-0.5">04</span>
+          <span>Automate custom data parsing directly into your field software</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-8 pt-4 border-t border-white/10">
+      <h2 class="text-[10px] font-mono font-bold tracking-[0.2em] text-neutral-500 uppercase">How Compass Works</h2>
+      
+      <div class="space-y-3 font-mono text-xs text-neutral-400 max-w-xs pl-1">
+        <div class="flex items-center gap-4">
+          <span class="text-neutral-600">01</span>
+          <span>Customer Calls</span>
+        </div>
+        <div class="text-neutral-600 pl-7 text-xs font-sans">↓</div>
+        
+        <div class="flex items-center gap-4 text-white">
+          <span class="text-royal-500 font-bold">02</span>
+          <span class="font-sans font-medium">Compass Answers</span>
+        </div>
+        <div class="text-neutral-600 pl-7 text-xs font-sans">↓</div>
+        
+        <div class="flex items-center gap-4">
+          <span class="text-neutral-600">03</span>
+          <span>Qualifies Lead</span>
+        </div>
+        <div class="text-neutral-600 pl-7 text-xs font-sans">↓</div>
+        
+        <div class="flex items-center gap-4">
+          <span class="text-neutral-600">04</span>
+          <span>Books Appointment</span>
+        </div>
+        <div class="text-neutral-600 pl-7 text-xs font-sans">↓</div>
+        
+        <div class="flex items-center gap-4">
+          <span class="text-neutral-600">05</span>
+          <span>You Get Notified</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-8 border-t border-white/5 font-mono text-[9px] text-neutral-600 tracking-widest flex justify-between items-center">
+      <span>© 2026 B&F INTELLIGENCE LABS</span>
+      <span>SECURE NODE</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
