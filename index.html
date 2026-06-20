@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>B&F Intelligence // Compass</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            royal: {
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=500;700;800&family=JetBrains+Mono:wght=500;700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      /* Cinematic Executive Office Glass Architecture - Fully Visible Canvas */
+      background-image: url('https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1200&dpr=2');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    .text-balance { text-wrap: balance; }
+  </style>
+
+  <script src="https://unpkg.com/retell-client-js-sdk/dist/bundle.js"></script>
+
+  <script>
+    let retellClient;
+
+    window.onload = async () => {
+      try {
+        // Headless initialization using standard SDK constructor structures
+        retellClient = new RetellWebClient({
+          apiKey: "key_3d8118c23aa72ceae886230f4bf5"
+        });
+      } catch (err) {
+        if (window.RetellWebClient) {
+          retellClient = window.RetellWebClient;
+        }
+      }
+
+      // Hardcoded binding for the unified call initiation token node
+      const compassBtn = document.getElementById("compass-btn");
+      const finalBtn = document.getElementById("compass-btn-final");
+
+      const triggerCall = async () => {
+        try {
+          await retellClient.startCall({
+            agentId: "agent_265561dec14c5c2d9d28f7b7c8"
+          });
+        } catch (err) {
+          console.error("Compass stream connection failed:", err);
+          try {
+            if (retellClient && typeof retellClient.startConversation === 'function') {
+              await retellClient.startConversation({
+                agentId: "agent_265561dec14c5c2d9d28f7b7c8"
+              });
+            }
+          } catch (innerErr) {
+            console.error("Session fallback halted:", innerErr);
+          }
+        }
+      };
+
+      if (compassBtn) compassBtn.onclick = triggerCall;
+      if (finalBtn) finalBtn.onclick = triggerCall;
+    };
+  </script>
+</head>
+<body class="text-white antialiased relative min-h-screen">
+
+  <div class="fixed inset-0 bg-neutral-950/45 z-0 pointer-events-none backdrop-blur-[3px]"></div>
+
+  <div class="relative z-10 max-w-xl mx-auto px-6 pt-20 pb-32 space-y-32 md:max-w-2xl">
+
+    <header class="flex justify-between items-center">
+      <div class="flex flex-col gap-1">
+        <span class="text-sm font-extrabold tracking-[0.4em] text-white">B&F INTELLIGENCE</span>
+        <span class="text-[10px] font-mono tracking-widest text-neutral-300 uppercase font-bold">Enterprise Infrastructure</span>
+      </div>
+    </header>
+
+    <section class="space-y-10">
+      <div class="space-y-6">
+        <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-white leading-[1.05] text-balance">
+          Never miss a customer call
+        </h1>
+
+        <p class="text-xl sm:text-2xl text-neutral-100 font-bold leading-relaxed text-balance max-w-xl">
+          Compass answers, qualifies, and books appointments automatically.
+        </p>
+
+        <div class="text-base sm:text-lg font-bold tracking-wide text-royal-500 font-mono pt-2">
+          Built for service businesses that lose money on missed calls
+        </div>
+      </div>
+      
+      <div class="pt-4">
+        <button
+          id="compass-btn"
+          class="w-full sm:w-auto px-12 bg-royal-500 text-white font-extrabold text-xl py-5 rounded-xl uppercase tracking-widest transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] shadow-[0_10px_30px_rgba(37,99,235,0.4)] cursor-pointer text-center"
+        >
+          Talk to Compass
+        </button>
+      </div>
+    </section>
+
+    <section class="space-y-8 pt-12 border-t border-white/20">
+      <h2 class="text-xs font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">Operational Outcomes</h2>
+      
+      <div class="space-y-6 font-extrabold text-xl sm:text-2xl text-white tracking-tight">
+        <div class="flex items-center gap-5">
+          <span class="text-royal-500 text-2xl font-bold">✓</span>
+          <span>Never miss another customer</span>
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-royal-500 text-2xl font-bold">✓</span>
+          <span>Answer every call</span>
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-royal-500 text-2xl font-bold">✓</span>
+          <span>Qualify leads instantly</span>
+        </div>
+        <div class="flex items-center gap-5">
+          <span class="text-royal-500 text-2xl font-bold">✓</span>
+          <span>Book appointments automatically</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-10 pt-12 border-t border-white/20">
+      <h2 class="text-xs font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">How Compass Works</h2>
+      
+      <div class="font-sans text-xl sm:text-2xl font-extrabold text-neutral-100 space-y-6 pl-1 tracking-tight">
+        <div class="flex items-center gap-6">
+          <span class="text-neutral-400 font-mono text-base font-bold">01</span>
+          <span>Customer calls</span>
+        </div>
+        
+        <div class="flex items-center gap-6 text-white bg-white/5 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-lg">
+          <span class="text-royal-500 font-mono text-base font-bold">02</span>
+          <span>Compass answers</span>
+        </div>
+        
+        <div class="flex items-center gap-6">
+          <span class="text-neutral-400 font-mono text-base font-bold">03</span>
+          <span>Lead qualified</span>
+        </div>
+        
+        <div class="flex items-center gap-6">
+          <span class="text-neutral-400 font-mono text-base font-bold">04</span>
+          <span>Appointment booked</span>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <span class="text-neutral-400 font-mono text-base font-bold">05</span>
+          <span>You get notified</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-8 pt-12 border-t border-white/20">
+      <h3 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
+        Secure your infrastructure line today.
+      </h3>
+      <div class="pt-2">
+        <button
+          id="compass-btn-final"
+          class="w-full sm:w-auto px-12 bg-royal-500 text-white font-extrabold text-xl py-5 rounded-xl uppercase tracking-widest transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] shadow-[0_10px_30px_rgba(37,99,235,0.4)] cursor-pointer text-center"
+        >
+          Talk to Compass
+        </button>
+      </div>
+    </section>
+
+    <footer class="pt-12 border-t border-white/10 font-mono text-[10px] text-neutral-400 tracking-widest flex justify-between items-center font-bold">
+      <span>© 2026 B&F INTELLIGENCE LABS</span>
+      <span>SECURE DISPATCH NODE</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
