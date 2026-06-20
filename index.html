@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>B&F Intelligence // Compass</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            royal: {
+              500: '#2563eb',
+              600: '#1d4ed8',
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=700;800&family=JetBrains+Mono:wght=700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Premium iOS Style Depth Layer: Clean Backdrop with Contrast Material Blur Overlays */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: url('https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1200&dpr=2');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    /* Absolute Zero-Tolerance UI Override for Retell Widgets */
+    iframe, 
+    [id^="retell"], 
+    [class^="retell"], 
+    #retell-aria-launcher, 
+    #retell-widget {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-cognitiveservices-speech-sdk/1.37.0/microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+  
+  <script>
+    // Pure Programmatic Voice Stream Binding Architecture
+    let retellClient;
+
+    window.onload = async () => {
+      // Configuration Token Definition Blocks
+      const PUBLIC_KEY = "YOUR_PUBLIC_KEY_HERE";
+      const AGENT_ID = "agent_265561dec14c5c2d9d28f7b7c8";
+
+      // Bind interaction handler to the layout buttons
+      const startConversationStream = async () => {
+        try {
+          // Direct WebRTC voice hardware request
+          navigator.mediaDevices.getUserMedia({ audio: true }).then(() => {
+            console.log("Audio pipeline authorized. Dispatched stream directly to node.");
+            // Trigger target call protocol instance
+            if (window.RetellWebClient) {
+              const client = new window.RetellWebClient({ apiKey: PUBLIC_KEY });
+              client.startCall({ agentId: AGENT_ID });
+            }
+          }).catch((err) => {
+            console.error("Microphone access initialization halted.", err);
+          });
+        } catch (err) {
+          console.error("Compass failed to start conversation node:", err);
+        }
+      };
+
+      const mainBtn = document.getElementById("compass-btn");
+      const finalBtn = document.getElementById("compass-btn-final");
+      
+      if (mainBtn) mainBtn.onclick = startConversationStream;
+      if (finalBtn) finalBtn.onclick = startConversationStream;
+    };
+  </script>
+</head>
+<body class="text-white antialiased relative min-h-screen">
+
+  <div class="fixed inset-0 z-0 pointer-events-none" style="background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+
+  <div class="relative z-10 max-w-xl mx-auto px-6 pt-24 pb-36 space-y-36 md:max-w-2xl">
+
+    <header class="flex justify-between items-center">
+      <div class="flex flex-col gap-1">
+        <span class="text-sm font-extrabold tracking-[0.4em] text-white">B&F INTELLIGENCE</span>
+        <span class="text-[10px] font-mono tracking-widest text-neutral-300 uppercase font-bold">Enterprise Infrastructure</span>
+      </div>
+    </header>
+
+    <section class="space-y-10">
+      <div class="space-y-8">
+        <h1 class="font-extrabold tracking-tight text-white" style="font-size: 64px; font-weight: 800; line-height: 1.05;">
+          Never miss a customer call
+        </h1>
+
+        <p class="text-white font-bold leading-relaxed max-w-xl" style="font-size: 22px; opacity: 0.95;">
+          Compass answers, qualifies, and books appointments automatically.
+        </p>
+
+        <div class="font-bold tracking-wide text-royal-500 font-mono" style="font-size: 18px; margin-top: 30px;">
+          Built for service businesses that lose money on missed calls
+        </div>
+      </div>
+      
+      <div>
+        <button
+          id="compass-btn"
+          class="w-full sm:w-auto bg-royal-500 text-white font-extrabold uppercase tracking-widest transition-all duration-200 hover:bg-royal-600 shadow-[0_10px_40px_rgba(37,99,235,0.5)] cursor-pointer text-center"
+          style="padding: 20px 36px; font-size: 18px; border-radius: 14px;"
+          onmouseover="this.style.transform='scale(1.03)'"
+          onmouseout="this.style.transform='scale(1)'"
+        >
+          Talk to Compass →
+        </button>
+      </div>
+    </section>
+
+    <section class="space-y-10 pt-16 border-t border-white/20">
+      <h2 class="text-sm font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">Operational Outcomes</h2>
+      
+      <div class="space-y-8 font-extrabold text-white tracking-tight" style="font-size: 24px;">
+        <div class="flex items-center gap-6">
+          <span class="text-royal-500 font-mono">✓</span>
+          <span>Never miss another customer</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="text-royal-500 font-mono">✓</span>
+          <span>Answer every call</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="text-royal-500 font-mono">✓</span>
+          <span>Qualify leads instantly</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="text-royal-500 font-mono">✓</span>
+          <span>Book appointments automatically</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-10 pt-16 border-t border-white/20">
+      <h2 class="text-sm font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">How Compass Works</h2>
+      
+      <div class="font-sans font-extrabold text-white space-y-8 pl-1 tracking-tight" style="font-size: 24px; line-height: 2;">
+        <div class="flex items-center gap-6 opacity-60">
+          <span class="text-neutral-400 font-mono text-base font-bold">01</span>
+          <span>Customer calls</span>
+        </div>
+        
+        <div class="flex items-center gap-6 text-white bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-xl">
+          <span class="text-royal-500 font-mono text-base font-bold">02</span>
+          <span>Compass answers</span>
+        </div>
+        
+        <div class="flex items-center gap-6 opacity-60">
+          <span class="text-neutral-400 font-mono text-base font-bold">03</span>
+          <span>Lead qualified</span>
+        </div>
+        
+        <div class="flex items-center gap-6 opacity-60">
+          <span class="text-neutral-400 font-mono text-base font-bold">04</span>
+          <span>Appointment booked</span>
+        </div>
+
+        <div class="flex items-center gap-6 opacity-60">
+          <span class="text-neutral-400 font-mono text-base font-bold">05</span>
+          <span>You get notified</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-10 pt-16 border-t border-white/20">
+      <h3 class="font-extrabold text-white tracking-tight leading-snug" style="font-size: 32px;">
+        Secure your infrastructure line today.
+      </h3>
+      <div class="pt-4">
+        <button
+          id="compass-btn-final"
+          class="w-full sm:w-auto bg-royal-500 text-white font-extrabold uppercase tracking-widest transition-all duration-200 hover:bg-royal-600 shadow-[0_10px_40px_rgba(37,99,235,0.5)] cursor-pointer text-center"
+          style="padding: 20px 36px; font-size: 18px; border-radius: 14px;"
+          onmouseover="this.style.transform='scale(1.03)'"
+          onmouseout="this.style.transform='scale(1)'"
+        >
+          Talk to Compass →
+        </button>
+      </div>
+    </section>
+
+    <footer class="pt-16 border-t border-white/10 font-mono text-[10px] text-neutral-400 tracking-widest flex justify-between items-center font-bold">
+      <span>© 2026 B&F INTELLIGENCE LABS</span>
+      <span>SECURE DISPATCH NODE</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
