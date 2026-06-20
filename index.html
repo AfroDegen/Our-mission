@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>B&F Intelligence // Compass AI Receptionist</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              500: '#2563eb',
+              600: '#1d4ed8',
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&family=JetBrains+Mono:wght=400;500&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .text-balance { text-wrap: balance; }
+  </style>
+
+  <script 
+    id="retell-widget" 
+    src="https://dashboard.retellai.com/retell-widget-v2.js" 
+    data-public-key="YOUR_PUBLIC_KEY_HERE"
+    data-voice-public-key="YOUR_PUBLIC_KEY_HERE"
+    data-voice-agent-id="YOUR_AGENT_ID_HERE"
+    data-show-launcher="false"
+    data-bot-name="Compass AI">
+  </script>
+
+  <script>
+    function launchRetellCall() {
+      if (window.RetellWebClient) {
+        window.RetellWebClient.startCall();
+      } else {
+        console.error("Retell client loading...");
+      }
+    }
+  </script>
+</head>
+<body class="text-white antialiased relative min-h-screen pb-32">
+
+  <div class="fixed inset-0 bg-neutral-950/80 z-0 pointer-events-none backdrop-blur-[4px]"></div>
+
+  <div class="relative z-10 max-w-md mx-auto px-6 py-12 space-y-20 sm:max-w-xl">
+
+    <header class="flex justify-between items-center border-b border-white/5 pb-6">
+      <span class="text-xs font-bold tracking-[0.3em] text-white">B&F INTELLIGENCE</span>
+      <span class="text-[10px] font-mono tracking-widest text-neutral-400 uppercase">System v1.0</span>
+    </header>
+
+    <section class="space-y-6 text-center sm:text-left">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-[1.1] text-balance">
+        Never Miss Another Customer Call.
+      </h1>
+      <p class="text-base sm:text-lg text-neutral-300 font-normal leading-relaxed text-balance">
+        AI phone agents that answer 24/7, qualify inbound leads, and secure bookings directly into your calendar.
+      </p>
+      <div class="pt-4">
+        <button onclick="launchRetellCall()" class="w-full sm:w-auto px-8 bg-brand-600 border border-white/10 text-white font-semibold text-xs py-4 rounded-xl uppercase tracking-wider transition-all hover:bg-brand-500 shadow-[0_4px_20px_rgba(37,99,235,0.25)]">
+          Test Live Voice Agent
+        </button>
+      </div>
+    </section>
+
+    <section class="space-y-6 bg-white/[0.02] border border-white/5 backdrop-blur-xl p-6 rounded-2xl">
+      <h2 class="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">Operational Outcomes</h2>
+      
+      <div class="grid gap-4 font-medium text-sm text-neutral-200">
+        <div class="flex items-center gap-3">
+          <span class="text-brand-500 text-lg">✓</span> <span>Capture every high-intent lead instantly</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-brand-500 text-lg">✓</span> <span>Eliminate missed call revenue leaks</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-brand-500 text-lg">✓</span> <span>Book appointments automatically 24/7</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-brand-500 text-lg">✓</span> <span>Operate seamlessly outside business hours</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-6">
+      <h2 class="text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase text-center sm:text-left">The System Architecture</h2>
+      
+      <div class="space-y-4 font-mono text-xs text-neutral-300 max-w-sm mx-auto sm:mx-0">
+        <div class="bg-black/30 border border-white/5 px-4 py-3 rounded-xl flex justify-between items-center">
+          <span>1. Inbound Business Call</span>
+          <span class="text-[10px] text-neutral-500">Trigger</span>
+        </div>
+        <div class="text-center text-neutral-500 font-sans text-sm">↓</div>
+        <div class="bg-black/30 border border-white/5 px-4 py-3 rounded-xl flex justify-between items-center">
+          <span>2. Compass AI Interface</span>
+          <span class="text-[10px] text-brand-500">Live Intake</span>
+        </div>
+        <div class="text-center text-neutral-500 font-sans text-sm">↓</div>
+        <div class="bg-black/30 border border-white/5 px-4 py-3 rounded-xl flex justify-between items-center">
+          <span>3. Intent Qualification</span>
+          <span class="text-[10px] text-brand-500">Parsing Data</span>
+        </div>
+        <div class="text-center text-neutral-500 font-sans text-sm">↓</div>
+        <div class="bg-black/30 border border-white/5 px-4 py-3 rounded-xl flex justify-between items-center">
+          <span>4. Calendar Appointment</span>
+          <span class="text-[10px] text-emerald-500">Secured</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pt-8 border-t border-white/5 text-center font-mono text-[9px] text-neutral-500 tracking-widest">
+      © 2026 B&F INTELLIGENCE LABS. ALL RIGHTS RESERVED.
+    </footer>
+
+  </div>
+
+  <div class="fixed bottom-6 right-4 left-4 z-50 max-w-md mx-auto sm:left-auto sm:right-6 sm:w-auto transition-all duration-300">
+    <button onclick="launchRetellCall()" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-neutral-900/80 backdrop-blur-2xl border border-white/10 text-white px-6 py-4 rounded-xl hover:bg-neutral-800 transition-all shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-xs font-bold tracking-widest uppercase font-sans">Talk to Compass AI</span>
+    </button>
+  </div>
+
+</body>
+</html>
