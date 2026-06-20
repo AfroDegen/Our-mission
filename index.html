@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>B&F Intelligence // Compass</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            royal: {
+              500: '#2563eb',
+              600: '#1d4ed8',
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=700;800&family=JetBrains+Mono:wght=700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Premium iOS Style Depth Layer with Icecaps Background Landscape */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: url('https://images.pexels.com/photos/533865/pexels-photo-533865.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1200&dpr=2');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+  </style>
+
+  <script 
+    id="retell-widget" 
+    src="https://dashboard.retellai.com/retell-widget-v2.js" 
+    data-public-key="YOUR_PUBLIC_KEY_HERE"
+    data-voice-public-key="YOUR_PUBLIC_KEY_HERE"
+    data-voice-agent-id="agent_265561dec14c5c2d9d28f7b7c8"
+    data-show-launcher="true"
+    data-bot-name="Compass">
+  </script>
+</head>
+<body class="text-white antialiased relative min-h-screen">
+
+  <div class="fixed inset-0 z-0 pointer-events-none" style="background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+
+  <div class="relative z-10 max-w-xl mx-auto px-6 pt-24 pb-36 space-y-36 md:max-w-2xl">
+
+    <header class="flex justify-between items-center">
+      <div class="flex flex-col gap-1">
+        <span class="text-sm font-extrabold tracking-[0.4em] text-white">B&F INTELLIGENCE</span>
+        <span class="text-[10px] font-mono tracking-widest text-neutral-300 uppercase font-bold">Enterprise Infrastructure</span>
+      </div>
+    </header>
+
+    <section class="space-y-10">
+      <div class="space-y-8">
+        <h1 class="font-extrabold tracking-tight text-white" style="font-size: 64px; font-weight: 800; line-height: 1.05;">
+          Never miss a customer call
+        </h1>
+
+        <p class="text-white font-bold leading-relaxed max-w-xl" style="font-size: 22px; opacity: 1;">
+          Compass answers, qualifies, and books appointments automatically.
+        </p>
+
+        <div class="font-bold tracking-wide text-white font-mono" style="font-size: 18px; margin-top: 30px;">
+          Built for service businesses that lose money on missed calls
+        </div>
+      </div>
+      
+      <div>
+        <button
+          onclick="const launcher = document.getElementById('retell-aria-launcher') || document.querySelector('[id^=\'retell-shadow-root\']'); if(launcher) launcher.click();"
+          class="w-full sm:w-auto bg-royal-500 text-white font-extrabold uppercase tracking-widest transition-all duration-200 hover:bg-royal-600 shadow-[0_10px_40px_rgba(37,99,235,0.5)] cursor-pointer text-center"
+          style="padding: 20px 36px; font-size: 18px; border-radius: 14px;"
+          onmouseover="this.style.transform='scale(1.03)'"
+          onmouseout="this.style.transform='scale(1)'"
+        >
+          Talk to Compass →
+        </button>
+      </div>
+    </section>
+
+    <section class="space-y-10 pt-16 border-t border-white/20">
+      <h2 class="text-sm font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">Operational Outcomes</h2>
+      
+      <div class="space-y-8 font-extrabold text-white tracking-tight" style="font-size: 24px;">
+        <div class="flex items-center gap-6">
+          <span class="w-2 h-2 rounded-full bg-royal-500"></span>
+          <span>Never miss another customer</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="w-2 h-2 rounded-full bg-royal-500"></span>
+          <span>Answer every call</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="w-2 h-2 rounded-full bg-royal-500"></span>
+          <span>Qualify leads instantly</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="w-2 h-2 rounded-full bg-royal-500"></span>
+          <span>Book appointments automatically</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-10 pt-16 border-t border-white/20">
+      <h2 class="text-sm font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">How Compass Works</h2>
+      
+      <div class="font-sans font-extrabold text-white space-y-8 pl-1 tracking-tight" style="font-size: 24px; line-height: 2;">
+        <div class="flex items-center gap-6 opacity-60">
+          <span>Customer calls</span>
+        </div>
+        
+        <div class="flex items-center gap-6 text-white bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-xl">
+          <span>Compass answers</span>
+        </div>
+        
+        <div class="flex items-center gap-6 opacity-60">
+          <span>Lead qualified</span>
+        </div>
+        
+        <div class="flex items-center gap-6 opacity-60">
+          <span>Appointment booked</span>
+        </div>
+
+        <div class="flex items-center gap-6 opacity-60">
+          <span>You get notified</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-10 pt-16 border-t border-white/20">
+      <h3 class="font-extrabold text-white tracking-tight leading-snug" style="font-size: 32px;">
+        Secure your infrastructure line today.
+      </h3>
+      <div class="pt-4">
+        <button
+          onclick="const launcher = document.getElementById('retell-aria-launcher') || document.querySelector('[id^=\'retell-shadow-root\']'); if(launcher) launcher.click();"
+          class="w-full sm:w-auto bg-royal-500 text-white font-extrabold uppercase tracking-widest transition-all duration-200 hover:bg-royal-600 shadow-[0_10px_40px_rgba(37,99,235,0.5)] cursor-pointer text-center"
+          style="padding: 20px 36px; font-size: 18px; border-radius: 14px;"
+          onmouseover="this.style.transform='scale(1.03)'"
+          onmouseout="this.style.transform='scale(1)'"
+        >
+          Talk to Compass →
+        </button>
+      </div>
+    </section>
+
+    <footer class="pt-16 border-t border-white/10 font-mono text-[10px] text-neutral-400 tracking-widest flex justify-between items-center font-bold">
+      <span>© 2026 B&F INTELLIGENCE LABS</span>
+      <span>SECURE DISPATCH NODE</span>
+    </footer>
+
+  </div>
+
+</body>
+</html>
