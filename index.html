@@ -23,12 +23,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
-  <!-- Retell Widget -->
+  <!-- Retell Widget v2 -->
   <script
     id="retell-widget"
     src="https://dashboard.retellai.com/retell-widget-v2.js"
     data-public-key="key_bb600cf9d3cfead9f33fdee3d72e"
-    data-voice-public-key="key_bb600cf9d3cfead9f33fdee3d72e"
+    data-agent-id="agent_5a856f628dbc6b9edf9bd13a8f"
     data-show-launcher="false">
   </script>
 
@@ -715,13 +715,27 @@
     document.getElementById('modal-title').textContent = 'Connected to Compass';
     document.getElementById('modal-sub').textContent = 'Compass is listening. Speak naturally — ask about services, pricing, or booking.';
 
-    // Launch Retell
+    // Launch Retell v2 widget
     try {
-      if (window.RetellWebClient) {
-        window.RetellWebClient.startCall();
+      // Method 1: SDK direct call
+      if (window.RetellWebClient && typeof window.RetellWebClient.startCall === 'function') {
+        window.RetellWebClient.startCall({
+          agentId: 'agent_5a856f628dbc6b9edf9bd13a8f'
+        });
       } else {
-        const launcher = document.querySelector('[id^="retell-shadow-root"]') || document.getElementById('retell-aria-launcher');
-        if (launcher) launcher.click();
+        // Method 2: click the widget launcher that Retell injects into the DOM
+        const selectors = [
+          '[id^="retell-shadow-root"]',
+          '#retell-aria-launcher',
+          '[data-retell-launcher]',
+          'retell-widget',
+        ];
+        let launched = false;
+        for (const sel of selectors) {
+          const el = document.querySelector(sel);
+          if (el) { el.click(); launched = true; break; }
+        }
+        if (!launched) console.warn('Retell widget not found — check script load.');
       }
     } catch(e) { console.warn('Retell launch error:', e); }
   }
@@ -736,8 +750,10 @@
     document.getElementById('modal-sub').textContent = 'Click the button below and start speaking. Compass will answer like a real receptionist.';
 
     try {
-      if (window.RetellWebClient) window.RetellWebClient.stopCall();
-    } catch(e) {}
+      if (window.RetellWebClient && typeof window.RetellWebClient.stopCall === 'function') {
+        window.RetellWebClient.stopCall();
+      }
+    } catch(e) { console.warn('Retell stop error:', e); }
   }
 
   // Keyboard close
