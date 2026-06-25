@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Compass Leads Viewer</title>
+  <style>
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:18px;color:#0f172a}
+    table{border-collapse:collapse;width:100%;max-width:1100px}
+    th,td{border:1px solid #e6e9ef;padding:10px;text-align:left}
+    th{background:#f8fafc}
+    .muted{color:#6b7280}
+    .controls{margin-bottom:12px}
+    .btn{padding:8px 12px;background:#4f46e5;color:white;border-radius:8px;border:none;cursor:pointer}
+    .small{font-size:13px;padding:6px 8px}
+  </style>
+</head>
+<body>
+  <h1>Compass — Leads Viewer</h1>
+  <p class="muted">Displays rows from the <code>retell_calls</code> table in Supabase. Provide credentials via query params: <code>?url=&key=</code> or edit this file.</p>
+
+  <div class="controls">
+    <input id="url" placeholder="SUPABASE_URL (or use ?url=)" style="width:48%" />
+    <input id="key" placeholder="SUPABASE_PUBLISHABLE_KEY (or use ?key=)" style="width:40%" />
+    <button id="connect" class="btn small">Connect & Refresh</button>
+    <button id="poll" class="small" style="margin-left:8px">Auto-refresh: <span id="autostate">off</span></button>
+  </div>
+
+  <div id="status" class="muted">Not connected</div>
+
+  <div id="results"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+  <script>
+    // Read from query params if provided
+    function qp(name){
+      const u=new URLSearchParams(window.location.search); return u.get(name)
+    }
+    const inpUrl = document.getElementById('url');
+    const inpKey = document.getElementById('key');
+    inpUrl.value = qp('url') || ''
+    inpKey.value = qp('key') || ''
+
+    let supabase = null
+    let polling = false
+    let pollId = null
+
+    document.getElementById('connect').addEventListener('click', init)
+    document.getElementById('poll').addEventListener('click', () => {
+      polling = !polling; document.getElementById('autostate').textContent = polling ? 'on' : 'off'
+      if (polling) { pollId = setInterval(fetchLeads, 4000) } else { clearInterval(pollId) }
+    })
+
+    function init(){
+      const url = inpUrl.value.trim(); const key = inpKey.value.trim();
+      if (!url || !key) return alert('Please provide SUPABASE URL and publishable KEY')
+      try{
+        supabase = supabaseJs.createClient(url, key)
+        document.getElementById('status').textContent = 'Connected — fetching leads...'
+        fetchLeads()
+      }catch(e){
+        document.getElementById('status').textContent = 'Failed to create client: '+e.message
+      }
+    }
+
+    async function fetchLeads(){
+      if (!supabase) return document.getElementById('status').textContent = 'Not connected'
+      document.getElementById('status').textContent = 'Fetching...'
+      try{
+        const { data, error } = await supabase.from('retell_calls').select('*').order('created_at', { ascending: false }).limit(200)
+        if (error) throw error
+        render(data || [])
+        document.getElementById('status').textContent = `Loaded ${ (data||[]).length } leads — last updated ${new Date().toLocaleTimeString()}`
+      }catch(err){ document.getElementById('status').textContent = 'Error: '+err.message }
+    }
+
+    function render(rows){
+      const out = document.getElementById('results')
+      if (!rows.length) { out.innerHTML = '<p class="muted">No leads yet.</p>'; return }
+      const cols = ['created_at','session_id','name','phone','email','message']
+      let html = '<table><thead><tr>' + cols.map(c=>`<th>${c}</th>`).join('') + '</tr></thead><tbody>'
+      html += rows.map(r=>'<tr>'+cols.map(c=>`<td>${ escapeHtml((r[c]===null||r[c]===undefined)?'':String(r[c])) }</td>`).join('')+'</tr>').join('')
+      html += '</tbody></table>'
+      out.innerHTML = html
+    }
+
+    function escapeHtml(s){ return s.replaceAll('<','&lt;').replaceAll('>','&gt;') }
+
+    // Auto-init if query params present
+    if (inpUrl.value && inpKey.value) init()
+  </script>
+</body>
+</html>

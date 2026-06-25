@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>B&F Intelligence // Compass AI Receptionist</title>
-  
+  <title>Compass AI — Never Miss a Customer Call Again</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -14,13 +14,6 @@
             sans: ['Plus Jakarta Sans', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
-          colors: {
-            royal: {
-              500: '#2563eb',
-              600: '#1d4ed8',
-              700: '#1e40af',
-            },
-          }
         }
       }
     }
@@ -28,127 +21,730 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=700;800&family=JetBrains+Mono:wght=700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* iOS Depth Layout Layer Architecture with Premium Non-AI Cyber Server Infrastructure Background */
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2668&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-    }
-    .text-balance { text-wrap: balance; }
-  </style>
-
-  <script 
-    id="retell-widget" 
-    src="https://dashboard.retellai.com/retell-widget-v2.js" 
-    data-public-key="key_3d8118c23aa72ceae886230f4bf5"
-    data-voice-public-key="key_3d8118c23aa72ceae886230f4bf5"
-    data-voice-agent-id="agents/agent_265561dec14c5c2d9d28f7b7c8"
-    data-show-launcher="true">
+  <!-- Retell Widget -->
+  <script
+    id="retell-widget"
+    src="https://dashboard.retellai.com/retell-widget-v2.js"
+    data-public-key="key_bb600cf9d3cfead9f33fdee3d72e"
+    data-voice-public-key="key_bb600cf9d3cfead9f33fdee3d72e"
+    data-show-launcher="false">
   </script>
 
-  <script>
-    function launchRetellCall() {
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #ffffff;
+      color: #0c0c1d;
+      scroll-behavior: smooth;
+    }
+
+    /* ── Grid texture ── */
+    .grid-texture {
+      background-image:
+        linear-gradient(rgba(99,102,241,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #ede9fe;
+    }
+
+    /* ── Hero glow ── */
+    .hero-glow {
+      position: absolute;
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse at 50% 40%, #ddd6fe 0%, #ede9fe 45%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 16px 32px;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 20px rgba(79,70,229,0.35);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(79,70,229,0.45);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      background: transparent;
+      color: #4f46e5;
+      border: 2px solid #c4b5fd;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 28px;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background 0.15s, border-color 0.15s;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .btn-ghost:hover { background: #ede9fe; border-color: #7c3aed; }
+
+    /* ── Pill label ── */
+    .pill {
+      display: inline-block;
+      background: #ede9fe;
+      color: #4f46e5;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 5px 14px;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+    }
+
+    /* ── Chat card ── */
+    .chat-card {
+      background: #fff;
+      border-radius: 24px;
+      border: 1px solid #ede9fe;
+      box-shadow:
+        0 0 0 1px rgba(99,102,241,0.06),
+        0 4px 8px rgba(99,102,241,0.06),
+        0 24px 64px rgba(99,102,241,0.14);
+      overflow: hidden;
+    }
+    .chat-header {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      padding: 16px 20px;
+      display: flex; align-items: center; gap-12px;
+    }
+    .ai-avatar {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .bubble-ai {
+      background: #f0effe;
+      color: #3730a3;
+      border-radius: 18px 18px 18px 4px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+      max-width: 88%;
+    }
+    .bubble-user {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+      border-radius: 18px 18px 4px 18px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+      max-width: 80%;
+    }
+
+    /* ── Typing dots ── */
+    @keyframes typing-dot {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+    .typing-dot:nth-child(1) { animation: typing-dot 1.2s 0s infinite; }
+    .typing-dot:nth-child(2) { animation: typing-dot 1.2s 0.2s infinite; }
+    .typing-dot:nth-child(3) { animation: typing-dot 1.2s 0.4s infinite; }
+
+    /* ── Live badge pulse ── */
+    @keyframes live-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .live-dot { animation: live-pulse 1.5s infinite; }
+
+    /* ── Stat cards ── */
+    .stat-card {
+      background: #fff;
+      border: 1px solid #ede9fe;
+      border-radius: 20px;
+      padding: 28px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(99,102,241,0.14);
+    }
+
+    /* ── How it works ── */
+    .step-node {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: #fff;
+      font-weight: 800;
+      font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+    }
+    .step-connector {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, #a5b4fc, #c4b5fd);
+      margin-top: -24px;
+    }
+
+    /* ── Testimonial ── */
+    .tcard {
+      background: #fff;
+      border: 1px solid #ede9fe;
+      border-radius: 20px;
+      padding: 28px;
+      transition: box-shadow 0.2s;
+    }
+    .tcard:hover { box-shadow: 0 8px 32px rgba(99,102,241,0.1); }
+
+    /* ── CTA band ── */
+    .cta-band {
+      background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #7c3aed 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* ── Mobile nav menu ── */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: block; }
+
+    /* ── Demo modal overlay ── */
+    #demo-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(12,12,29,0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    #demo-overlay.active { display: flex; }
+    .demo-modal {
+      background: #fff;
+      border-radius: 24px;
+      padding: 40px 36px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+    }
+
+    /* ── Voice animation bars ── */
+    @keyframes voice-bar {
+      0%, 100% { height: 8px; }
+      50% { height: 32px; }
+    }
+    .vbar { width: 4px; border-radius: 100px; background: #4f46e5; }
+    .vbar:nth-child(1) { animation: voice-bar 0.8s 0.0s ease-in-out infinite; }
+    .vbar:nth-child(2) { animation: voice-bar 0.8s 0.15s ease-in-out infinite; }
+    .vbar:nth-child(3) { animation: voice-bar 0.8s 0.3s ease-in-out infinite; }
+    .vbar:nth-child(4) { animation: voice-bar 0.8s 0.45s ease-in-out infinite; }
+    .vbar:nth-child(5) { animation: voice-bar 0.8s 0.6s ease-in-out infinite; }
+    .voice-bars { display: flex; align-items: center; gap: 5px; height: 40px; }
+    .voice-bars.paused .vbar { animation-play-state: paused; height: 8px; }
+
+    @media (max-width: 768px) {
+      .step-connector { display: none; }
+      .hero-glow { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAV ═══════════════════════ -->
+<nav>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex flex-col leading-none">
+      <span class="font-extrabold text-base tracking-tight" style="color:#4f46e5;">Compass AI</span>
+      <span class="font-mono text-[10px] tracking-widest uppercase" style="color:#a5b4fc;">by B&F Intelligence</span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-neutral-500">
+      <a href="#how-it-works" class="hover:text-indigo-600 transition-colors">How It Works</a>
+      <a href="#results" class="hover:text-indigo-600 transition-colors">Results</a>
+      <a href="#faq" class="hover:text-indigo-600 transition-colors">FAQ</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="flex items-center gap-3">
+      <button onclick="openDemo()" class="btn-primary" style="padding:12px 22px; font-size:14px;">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        Try Compass Live
+      </button>
+      <!-- Mobile hamburger -->
+      <button onclick="toggleMenu()" class="md:hidden p-2 text-neutral-500" aria-label="Menu">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden px-6 pb-4 space-y-3 text-sm font-semibold text-neutral-600 border-t border-indigo-50">
+    <a href="#how-it-works" onclick="toggleMenu()" class="block pt-3 hover:text-indigo-600">How It Works</a>
+    <a href="#results" onclick="toggleMenu()" class="block hover:text-indigo-600">Results</a>
+    <a href="#faq" onclick="toggleMenu()" class="block hover:text-indigo-600">FAQ</a>
+  </div>
+</nav>
+
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="relative overflow-hidden grid-texture" style="background:#faf9ff;">
+  <div class="hero-glow"></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-28 md:pb-24">
+    <div class="flex flex-col lg:flex-row items-center gap-14 lg:gap-20">
+
+      <!-- ── Left copy ── -->
+      <div class="flex-1 space-y-7 text-center lg:text-left">
+        <span class="pill">AI Receptionist · 24/7</span>
+
+        <h1 class="font-extrabold tracking-tight text-balance" style="font-size: clamp(38px,5.5vw,66px); line-height:1.06; color:#0c0c1d;">
+          Never miss a<br>
+          <span style="color:#4f46e5;">customer call</span><br>again.
+        </h1>
+
+        <p class="font-medium leading-relaxed max-w-md mx-auto lg:mx-0" style="font-size:18px; color:#64748b;">
+          Compass answers instantly, qualifies your lead, and books the appointment — while you stay focused on the job.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+          <button onclick="openDemo()" class="btn-primary" style="font-size:16px; padding:16px 28px;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            Try Compass Live — It's Free
+          </button>
+          <a href="#how-it-works" class="btn-ghost">See how it works</a>
+        </div>
+
+        <!-- Social proof row -->
+        <div class="flex items-center gap-4 justify-center lg:justify-start pt-1">
+          <div class="flex -space-x-2">
+            <div class="w-8 h-8 rounded-full bg-indigo-100 border-2 border-white flex items-center justify-center text-xs font-bold text-indigo-600">MO</div>
+            <div class="w-8 h-8 rounded-full bg-purple-100 border-2 border-white flex items-center justify-center text-xs font-bold text-purple-600">FA</div>
+            <div class="w-8 h-8 rounded-full bg-violet-100 border-2 border-white flex items-center justify-center text-xs font-bold text-violet-600">DK</div>
+          </div>
+          <p class="text-sm font-medium text-neutral-500">
+            <strong class="text-neutral-700">50+ businesses</strong> capturing more leads
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Right: Chat card ── -->
+      <div class="flex-1 w-full max-w-sm lg:max-w-md mx-auto">
+        <div class="chat-card">
+          <!-- Header bar -->
+          <div class="chat-header" style="gap:12px; display:flex; align-items:center;">
+            <div class="ai-avatar">🎙️</div>
+            <div class="flex-1" style="margin-left:12px;">
+              <p class="font-bold text-white text-sm">Compass AI Receptionist</p>
+              <p class="text-indigo-200 text-xs font-medium flex items-center gap-1.5 mt-0.5">
+                <span class="live-dot w-1.5 h-1.5 bg-green-400 rounded-full inline-block"></span>
+                Available now — click to speak
+              </p>
+            </div>
+            <button onclick="openDemo()" style="background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:8px 14px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;">
+              Call Now
+            </button>
+          </div>
+
+          <!-- Chat bubbles -->
+          <div class="p-5 space-y-4">
+            <!-- AI -->
+            <div class="flex gap-3">
+              <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>
+              <div class="bubble-ai">
+                Hi! This is Compass. Thanks for calling — what service can I help you book today?
+              </div>
+            </div>
+            <!-- User -->
+            <div class="flex justify-end gap-3">
+              <div class="bubble-user">
+                I need someone to look at my roof — it's leaking after the rain.
+              </div>
+              <div style="width:30px;height:30px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">👤</div>
+            </div>
+            <!-- AI -->
+            <div class="flex gap-3">
+              <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>
+              <div class="bubble-ai">
+                Got it — I'll get that booked for you right away. Can I get your name and best phone number?
+              </div>
+            </div>
+            <!-- Typing indicator -->
+            <div class="flex gap-3">
+              <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">🤖</div>
+              <div class="bubble-ai" style="padding:14px 18px;">
+                <div style="display:flex;gap:5px;align-items:center;height:16px;">
+                  <div class="typing-dot" style="width:7px;height:7px;border-radius:50%;background:#7c3aed;"></div>
+                  <div class="typing-dot" style="width:7px;height:7px;border-radius:50%;background:#7c3aed;"></div>
+                  <div class="typing-dot" style="width:7px;height:7px;border-radius:50%;background:#7c3aed;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA strip -->
+          <div onclick="openDemo()" style="background:#f0effe;border-top:1px solid #ede9fe;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;">
+            <span style="font-size:13px;font-weight:700;color:#4f46e5;">Talk to Compass now — it's live</span>
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Below card caption -->
+        <p class="text-center text-xs text-neutral-400 font-mono mt-3 tracking-wide">Real voice AI · No typing · No hold music</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ STATS / PROBLEM ═══════════════════════ -->
+<section class="bg-white py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14 space-y-3">
+      <span class="pill">The Problem</span>
+      <h2 class="font-extrabold text-balance" style="font-size:clamp(26px,3.5vw,42px); color:#0c0c1d;">
+        Missed calls are killing service businesses.
+      </h2>
+      <p class="text-neutral-500 font-medium max-w-lg mx-auto" style="font-size:17px;">
+        You're on-site, driving, or simply unavailable. The phone rings. Nobody answers. That lead is gone.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="stat-card">
+        <div class="font-extrabold mb-3" style="font-size:48px; color:#4f46e5; line-height:1;">62%</div>
+        <p class="font-bold text-neutral-800 mb-2" style="font-size:17px;">of callers won't leave a voicemail.</p>
+        <p class="text-neutral-500 text-sm font-medium">They hang up and dial the next result on Google. You paid for that click.</p>
+      </div>
+      <div class="stat-card">
+        <div class="font-extrabold mb-3" style="font-size:48px; color:#7c3aed; line-height:1;">5 min</div>
+        <p class="font-bold text-neutral-800 mb-2" style="font-size:17px;">is all it takes for a warm lead to go cold.</p>
+        <p class="text-neutral-500 text-sm font-medium">Speed of response is the single biggest factor in winning or losing the job.</p>
+      </div>
+      <div class="stat-card">
+        <div class="font-extrabold mb-3" style="font-size:48px; color:#4f46e5; line-height:1;">3×</div>
+        <p class="font-bold text-neutral-800 mb-2" style="font-size:17px;">more revenue when someone answers immediately.</p>
+        <p class="text-neutral-500 text-sm font-medium">Compass makes sure someone always answers — even at 11pm on a Sunday.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ HOW IT WORKS ═══════════════════════ -->
+<section id="how-it-works" style="background:#faf9ff;" class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 space-y-3">
+      <span class="pill">How It Works</span>
+      <h2 class="font-extrabold" style="font-size:clamp(26px,3.5vw,42px); color:#0c0c1d;">
+        Your new receptionist is already on the job.
+      </h2>
+    </div>
+
+    <!-- Steps row -->
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-0">
+
+      <div class="flex-1 flex flex-col items-center text-center px-6 pb-10 md:pb-0 space-y-4">
+        <div class="step-node">1</div>
+        <h3 class="font-extrabold text-lg text-neutral-800">Customer calls or visits</h3>
+        <p class="text-sm text-neutral-500 font-medium leading-relaxed max-w-xs">They land on your site, tap "Try Compass," and a real voice conversation starts immediately.</p>
+      </div>
+
+      <div class="step-connector hidden md:block"></div>
+
+      <div class="flex-1 flex flex-col items-center text-center px-6 pb-10 md:pb-0 space-y-4">
+        <div class="step-node">2</div>
+        <h3 class="font-extrabold text-lg text-neutral-800">Compass answers in 1 second</h3>
+        <p class="text-sm text-neutral-500 font-medium leading-relaxed max-w-xs">The AI greets them professionally, answers questions about your services, and starts qualifying the lead.</p>
+      </div>
+
+      <div class="step-connector hidden md:block"></div>
+
+      <div class="flex-1 flex flex-col items-center text-center px-6 pb-10 md:pb-0 space-y-4">
+        <div class="step-node">3</div>
+        <h3 class="font-extrabold text-lg text-neutral-800">Lead captured, appointment set</h3>
+        <p class="text-sm text-neutral-500 font-medium leading-relaxed max-w-xs">Compass collects name, number, job type, and preferred time. You get notified. Nothing falls through the cracks.</p>
+      </div>
+
+      <div class="step-connector hidden md:block"></div>
+
+      <div class="flex-1 flex flex-col items-center text-center px-6 space-y-4">
+        <div class="step-node">4</div>
+        <h3 class="font-extrabold text-lg text-neutral-800">You close the job</h3>
+        <p class="text-sm text-neutral-500 font-medium leading-relaxed max-w-xs">You see the summary and call the customer back on your terms — with full context already in hand.</p>
+      </div>
+
+    </div>
+
+    <!-- Demo CTA below steps -->
+    <div class="text-center mt-16">
+      <button onclick="openDemo()" class="btn-primary" style="font-size:16px;">
+        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        Hear Compass in Action
+      </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ RESULTS ═══════════════════════ -->
+<section id="results" class="bg-white py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14 space-y-3">
+      <span class="pill">Results</span>
+      <h2 class="font-extrabold" style="font-size:clamp(26px,3.5vw,42px); color:#0c0c1d;">
+        What service businesses say
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="tcard">
+        <div class="flex gap-0.5 mb-4" style="color:#f59e0b;font-size:18px;">★★★★★</div>
+        <p class="text-neutral-600 font-medium text-sm leading-relaxed mb-5">"We used to lose weekend leads constantly. Since Compass went live, we've picked up 3 extra jobs every Saturday without lifting a finger."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-indigo-100 flex items-center justify-center font-bold text-indigo-600 text-xs">MO</div>
+          <div>
+            <p class="font-bold text-sm text-neutral-800">Marcus O.</p>
+            <p class="text-xs text-neutral-400">Roofing & Waterproofing</p>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="flex gap-0.5 mb-4" style="color:#f59e0b;font-size:18px;">★★★★★</div>
+        <p class="text-neutral-600 font-medium text-sm leading-relaxed mb-5">"I used to miss calls while on site. Now I come back to a full booking sheet. Compass sounds professional — customers don't even realize it's AI."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600 text-xs">FA</div>
+          <div>
+            <p class="font-bold text-sm text-neutral-800">Funmilayo A.</p>
+            <p class="text-xs text-neutral-400">Interior Design & Renovation</p>
+          </div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="flex gap-0.5 mb-4" style="color:#f59e0b;font-size:18px;">★★★★★</div>
+        <p class="text-neutral-600 font-medium text-sm leading-relaxed mb-5">"Our Google Ads spend finally stopped going to waste. Compass qualifies every inquiry in seconds. The ROI improvement was immediate."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-violet-100 flex items-center justify-center font-bold text-violet-600 text-xs">DK</div>
+          <div>
+            <p class="font-bold text-sm text-neutral-800">David K.</p>
+            <p class="text-xs text-neutral-400">HVAC & Air Conditioning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ FAQ ═══════════════════════ -->
+<section id="faq" style="background:#faf9ff;" class="py-24">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-14 space-y-3">
+      <span class="pill">FAQ</span>
+      <h2 class="font-extrabold" style="font-size:clamp(26px,3.5vw,42px); color:#0c0c1d;">Common questions</h2>
+    </div>
+    <div class="space-y-4" id="faq-list">
+      <!-- JS renders these -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ CTA BAND ═══════════════════════ -->
+<section class="cta-band py-28">
+  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center space-y-6">
+    <h2 class="font-extrabold text-white text-balance" style="font-size:clamp(30px,4.5vw,54px); line-height:1.1;">
+      Stop losing jobs to whoever picked up the phone.
+    </h2>
+    <p class="font-medium" style="font-size:18px; color:#c7d2fe;">
+      Get Compass live on your site. Talk to it right now — no signup needed.
+    </p>
+    <button onclick="openDemo()" style="background:#fff; color:#4f46e5; border:none; border-radius:12px; font-weight:800; font-size:16px; padding:18px 36px; cursor:pointer; display:inline-flex; align-items:center; gap:10px; box-shadow:0 8px 32px rgba(0,0,0,0.2); transition:transform 0.15s; font-family:'Plus Jakarta Sans',sans-serif;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      Try Compass Live Now
+    </button>
+    <p class="font-mono text-indigo-300 text-xs tracking-widest uppercase">No credit card · No setup · Hear it instantly</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="bg-white border-t py-8" style="border-color:#ede9fe;">
+  <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div>
+      <span class="font-extrabold text-sm tracking-tight" style="color:#4f46e5;">Compass AI</span>
+      <span class="text-neutral-400 font-mono text-xs ml-3">© 2026 B&F Intelligence Labs</span>
+    </div>
+    <div class="flex items-center gap-6 text-sm text-neutral-400 font-medium">
+      <a href="#" class="hover:text-indigo-600 transition-colors">Privacy</a>
+      <a href="#" class="hover:text-indigo-600 transition-colors">Terms</a>
+      <a href="mailto:hello@bfintelligence.com" class="hover:text-indigo-600 transition-colors">Contact</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════ DEMO MODAL ═══════════════════════ -->
+<div id="demo-overlay" role="dialog" aria-modal="true" aria-label="Try Compass Live">
+  <div class="demo-modal">
+    <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#4f46e5,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 20px;">🎙️</div>
+    <h3 class="font-extrabold text-xl mb-2" style="color:#0c0c1d;" id="modal-title">Compass is ready to answer</h3>
+    <p class="text-sm text-neutral-500 font-medium mb-6" id="modal-sub">Click the button below and start speaking. Compass will answer like a real receptionist.</p>
+
+    <!-- Voice bars -->
+    <div class="voice-bars paused justify-center mb-6" id="voice-bars">
+      <div class="vbar"></div>
+      <div class="vbar"></div>
+      <div class="vbar"></div>
+      <div class="vbar"></div>
+      <div class="vbar"></div>
+    </div>
+
+    <button id="call-btn" onclick="handleCallToggle()" class="btn-primary w-full justify-center mb-3" style="font-size:15px; padding:15px;">
+      <svg id="call-icon" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      <span id="call-btn-text">Start Call with Compass</span>
+    </button>
+    <button onclick="closeDemo()" style="background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;">✕ Close</button>
+  </div>
+</div>
+
+
+<script>
+  // ── FAQ data ──
+  const faqs = [
+    { q: "Does it sound like a real person?", a: "Yes. Compass uses advanced voice AI that speaks naturally, handles interruptions, and responds in real time — most customers can't tell the difference." },
+    { q: "What information does Compass collect?", a: "By default: customer name, phone number, service requested, and preferred appointment time. This can be customized for your specific business." },
+    { q: "Do I need to be technical to set this up?", a: "Not at all. We handle the setup for you. All you do is add a snippet to your website — or we can do that too." },
+    { q: "What happens after Compass collects the lead?", a: "You receive an instant notification with the lead summary. You call the customer back on your own time — fully briefed." },
+    { q: "Does it work on mobile?", a: "Yes. Compass works on any device — desktop, tablet, or mobile — no app download required." },
+  ];
+
+  const faqList = document.getElementById('faq-list');
+  faqs.forEach((item, i) => {
+    faqList.innerHTML += `
+      <div class="bg-white border rounded-2xl overflow-hidden" style="border-color:#ede9fe;">
+        <button onclick="toggleFaq(${i})" class="w-full text-left px-6 py-5 flex items-center justify-between font-bold text-neutral-800" style="background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;">
+          ${item.q}
+          <svg id="faq-arrow-${i}" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#4f46e5" stroke-width="2.5" style="flex-shrink:0;transition:transform 0.2s;"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="faq-body-${i}" style="display:none; padding:0 24px 20px; color:#64748b; font-size:14px; font-weight:500; line-height:1.7;">${item.a}</div>
+      </div>`;
+  });
+
+  function toggleFaq(i) {
+    const body = document.getElementById('faq-body-' + i);
+    const arrow = document.getElementById('faq-arrow-' + i);
+    const open = body.style.display === 'block';
+    body.style.display = open ? 'none' : 'block';
+    arrow.style.transform = open ? 'rotate(0deg)' : 'rotate(180deg)';
+  }
+
+  // ── Mobile menu ──
+  function toggleMenu() {
+    document.getElementById('mobile-menu').classList.toggle('open');
+  }
+
+  // ── Demo modal ──
+  let callActive = false;
+
+  function openDemo() {
+    document.getElementById('demo-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDemo() {
+    if (callActive) endCall();
+    document.getElementById('demo-overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close on backdrop click
+  document.getElementById('demo-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeDemo();
+  });
+
+  // ── Call toggle ──
+  function handleCallToggle() {
+    if (callActive) {
+      endCall();
+    } else {
+      startCall();
+    }
+  }
+
+  function startCall() {
+    callActive = true;
+    // Animate voice bars
+    document.getElementById('voice-bars').classList.remove('paused');
+    // Update button
+    document.getElementById('call-btn').style.background = 'linear-gradient(135deg,#dc2626,#b91c1c)';
+    document.getElementById('call-btn-text').textContent = 'End Call';
+    document.getElementById('call-icon').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>';
+    document.getElementById('modal-title').textContent = 'Connected to Compass';
+    document.getElementById('modal-sub').textContent = 'Compass is listening. Speak naturally — ask about services, pricing, or booking.';
+
+    // Launch Retell
+    try {
       if (window.RetellWebClient) {
         window.RetellWebClient.startCall();
       } else {
-        const launcher = document.getElementById('retell-aria-launcher') || document.querySelector('[id^="retell-shadow-root"]');
-        if (launcher) {
-          launcher.click();
-        } else {
-          console.error("Retell widget script is loading or has missing keys.");
-        }
+        const launcher = document.querySelector('[id^="retell-shadow-root"]') || document.getElementById('retell-aria-launcher');
+        if (launcher) launcher.click();
       }
-    }
-  </script>
-</head>
-<body class="text-white antialiased relative min-h-screen">
+    } catch(e) { console.warn('Retell launch error:', e); }
+  }
 
-  <div class="fixed inset-0 z-0 pointer-events-none" style="background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px);"></div>
+  function endCall() {
+    callActive = false;
+    document.getElementById('voice-bars').classList.add('paused');
+    document.getElementById('call-btn').style.background = 'linear-gradient(135deg,#4f46e5,#7c3aed)';
+    document.getElementById('call-btn-text').textContent = 'Start Call with Compass';
+    document.getElementById('call-icon').innerHTML = '<path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>';
+    document.getElementById('modal-title').textContent = 'Compass is ready to answer';
+    document.getElementById('modal-sub').textContent = 'Click the button below and start speaking. Compass will answer like a real receptionist.';
 
-  <div class="relative z-10 max-w-xl mx-auto px-6 pt-24 pb-36 space-y-36 md:max-w-2xl">
+    try {
+      if (window.RetellWebClient) window.RetellWebClient.stopCall();
+    } catch(e) {}
+  }
 
-    <header class="flex justify-between items-center">
-      <div class="flex flex-col gap-1">
-        <span class="text-sm font-extrabold tracking-[0.4em] text-white">B&F INTELLIGENCE</span>
-        <span class="text-[10px] font-mono tracking-widest text-neutral-300 uppercase font-bold">Enterprise Infrastructure</span>
-      </div>
-    </header>
-
-    <section class="space-y-10">
-      <div class="space-y-8">
-        <h1 class="font-extrabold tracking-tight text-white" style="font-size: 64px; font-weight: 800; line-height: 1.05;">
-          Never miss a customer call
-        </h1>
-
-        <p class="text-white font-bold leading-relaxed max-w-xl" style="font-size: 22px; opacity: 1;">
-          Stop paying Google for traffic you don't reply to. B&F builds custom AI receptionists that answer customer questions instantly, qualify intent, and secure phone bookings 24/7.
-        </p>
-
-        <div class="font-bold tracking-wide text-white font-mono" style="font-size: 18px; margin-top: 30px;">
-          Built for service businesses that lose money on missed calls
-        </div>
-      </div>
-    </section>
-
-    <section class="space-y-10 pt-16 border-t border-white/20">
-      <h2 class="text-sm font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">The Problem</h2>
-      
-      <p class="text-white font-bold max-w-xl" style="font-size: 22px; opacity: 1;">
-        While you are managing operational sites, handling paperwork, or off duty:
-      </p>
-
-      <div class="space-y-8 font-extrabold text-white tracking-tight" style="font-size: 24px;">
-        <div class="flex items-center gap-6">
-          <span class="w-2 h-2 rounded-full bg-royal-500 shrink-0"></span>
-          <span>High-intent website traffic lands on empty forms and abandons your page.</span>
-        </div>
-        <div class="flex items-center gap-6">
-          <span class="w-2 h-2 rounded-full bg-royal-500 shrink-0"></span>
-          <span>Weekend click-throughs look for fast responses and call your competitors instead.</span>
-        </div>
-        <div class="flex items-center gap-6">
-          <span class="w-2 h-2 rounded-full bg-royal-500 shrink-0"></span>
-          <span>Expensive ad spend goes to waste because nobody answered the inquiry immediately.</span>
-        </div>
-      </div>
-
-      <p class="font-extrabold text-white tracking-tight leading-snug pt-4" style="font-size: 24px;">
-        Every unanswered customer question is a direct invoice handed to a competitor.
-      </p>
-    </section>
-
-    <section class="space-y-10 pt-16 border-t border-white/20">
-      <h2 class="text-sm font-mono font-extrabold tracking-[0.3em] text-neutral-300 uppercase">How Compass Works</h2>
-      
-      <div class="font-sans font-extrabold text-white space-y-8 pl-1 tracking-tight" style="font-size: 24px; line-height: 2;">
-        <div class="flex items-center gap-6 opacity-60">
-          <span>Visitor starts a call</span>
-        </div>
-        
-        <div class="flex items-center gap-6 text-white bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 shadow-xl">
-          <span>AI answers instantly</span>
-        </div>
-        
-        <div class="flex items-center gap-6 opacity-60">
-          <span>AI captures the job</span>
-        </div>
-      </div>
-    </section>
-
-    <footer class="pt-16 border-t border-white/10 font-mono text-[10px] text-neutral-400 tracking-widest flex justify-between items-center font-bold">
-      <span>© 2026 B&F INTELLIGENCE LABS</span>
-      <span>SECURE DISPATCH NODE</span>
-    </footer>
-
-  </div>
+  // Keyboard close
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDemo();
+  });
+</script>
 
 </body>
 </html>
